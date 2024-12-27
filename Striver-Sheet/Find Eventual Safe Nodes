@@ -1,0 +1,49 @@
+class Solution {
+public:
+// two ways dfs and bfs
+
+// dfs cycle check , if found mark all as unsafe in cycle , check for all
+
+// bfs kahns --> reverse the edges do kahns algorithm , retun topo vector
+
+// story is like 
+// there is house with n room and edges are path , if there is fire , how  you run to avoid loop
+// bfs return edge is  comming public from outside to save you.
+
+// answer is whom nodes have outdegree only to safe nodes or terminal nodes are answer
+    vector<int> eventualSafeNodes(vector<vector<int>>& graph) {
+        // reversing edges and storing out degree as indegree
+        int n = graph.size();
+        vector<int> indegree(n);
+        vector<vector<int>> adj(n);
+
+        for (int i = 0; i < n; i++) {
+            for (auto node : graph[i]) {
+                adj[node].push_back(i);
+                indegree[i]++;
+            }
+        }
+        queue<int> q;
+        for(int i = 0; i < graph.size(); i++){
+            if(indegree[i] == 0) q.push(i);
+        }
+
+        vector<int> ans;
+
+        while(!q.empty()){
+            int node = q.front();
+            q.pop();
+            ans.push_back(node);
+
+            for(int i : adj[node]){
+                indegree[i]--;
+                if(indegree[i] == 0){
+                    q.push(i);
+                }
+            }
+        }
+
+        sort(ans.begin(),ans.end());
+        return ans;
+    }
+};

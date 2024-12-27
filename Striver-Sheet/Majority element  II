@@ -1,0 +1,107 @@
+#define t 1e9
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& v) {
+     
+        int el1 =INT_MIN;
+        int el2 = INT_MIN;
+        vector<int> ans;
+        int count1 = 0, count2 = 0;
+        int n = v.size();
+        for(int i = 0;i<n;i++){           
+            if(count1 == 0 && el2 != v[i]){
+                el1 = v[i];    
+                count1 = 1;
+            }else if(count2 == 0 && el1 != v[i]){
+                el2 = v[i];
+                count2 = 1;
+            }else if(v[i] == el1){
+                count1++;
+            }else if(v[i] == el2){
+                count2++;
+            }else {
+                count1--;
+                count2--;               
+            }
+        }
+        // checking that the element we get that they reaaly are the answer.
+        int a = 0, b = 0;
+        for(int it : v){
+            if(it == el1) a++;
+            else if(it == el2) b++;
+        }
+        if(a > n/3) ans.push_back(el1);
+        if(b > n/3) ans.push_back(el2);
+        return ans;
+    }
+};
+// approach 2 my attempt , clear 86 cases / 89 , not clear 1 2 3 4
+/*
+vector<int> majorityElement(vector<int>& nums) {
+        int c = t+1;
+        int ans1 = t + 1;
+        vector<int> ans;
+        int ans2 = t + 1;
+        // cout<<ans1<<" "<<ans2;
+        int count1 = 0, count2 = 0;
+        int n = nums.size();
+        for(int i = 0;i<n;i++){
+            // initialise of 1st
+            // cout<<" ad ";
+            if(ans1 == c){
+                ans1 = nums[i];
+                // cout<<" o ";
+                count1 = 1;
+            }else if(nums[i] == ans1){
+                count1++;
+            }else if(ans2 == c){
+                ans2 = nums[i];
+                count2 = 1;
+            }else if(nums[i] == ans2){
+                count2++;
+            }else {
+                count1--;
+                if(count1 == 0){
+                    cout<<" a "<< ans1 << endl;
+                    ans1 = c;
+                }
+                count2--;
+                if(count2 == 0){
+                    cout<<" b "<<ans2 << endl;
+                    ans2 = c;
+                }
+            }
+        }
+        if(ans1 != c) ans.push_back(ans1);
+        if(ans2 != c) ans.push_back(ans2);
+        // cout<<ans1<<" "<<ans2;
+// either i can also apply the change logic if any third number come my answer would be right... need to think more
+// here  i am counting the frequency of probable ansswer
+        if(ans.size()!=2) return ans;
+        // cout<<ans.size();
+        int a = 0, b = 0;
+        for(int it : nums){
+            if(it == ans[0]) a++;
+            else if(it == ans[1]) b++;
+        }
+        ans.clear();
+        // cout<<ans1<<" "<<ans2<<endl;
+        // cout<<a <<" "<<b<<" "<<n/3;
+        if(a > n/3) ans.push_back(ans1);
+        if(b > n/3) ans.push_back(ans2);
+        return ans;
+    }
+*/
+// solution 1
+//unordered_map<int,int> mp;
+        // for(int it : nums){
+        //     mp[it]++;
+        // }
+        // vector<int> v;
+        // int n = nums.size()/3;
+        // for(auto it: mp){
+        //     if(it.second > n){
+        //         v.push_back(it.first);
+        //     }
+        // }
+        // return v;

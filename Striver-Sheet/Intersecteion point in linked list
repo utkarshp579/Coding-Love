@@ -1,0 +1,43 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+// approach find length , skip in higher one move both and check
+// another approach marks the visited one with -1 , but this changes the data in it.
+// need space complexity to solve 
+// the  most beautiful way is having two additional pointers at heads , and then traverse on ending exchange pointer , write condition, beautifull logic.
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        ListNode* tempA = headA;
+        ListNode* tempB = headB;
+        while(headA!=headB && headA != NULL && headB!=NULL){
+            headA = headA->next;
+            headB = headB->next;
+            if(headA==headB) return headA;
+            if(headA == NULL) headA = tempB;
+            if(headB == NULL) headB = tempA;
+        }
+        return headA;// worst case , headA and headB at NULL
+    }
+};
+/*
+ ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        // my approach is to solve with marking -1 to visited once, one time linear loop
+        // whha t a beautiful logic--> in worst case two time lloop
+        ListNode* temp1 = headA;
+        ListNode* temp2 = headB;
+        while(headA != headB && headA != NULL && headB!=NULL){
+            headA = headA->next;
+            headB = headB->next;
+            if(headA == headB) return headA;
+            if(headA == NULL) headA = temp2;
+            if(headB == NULL) headB = temp1;
+        }
+        return headA;// no intersection then 
+    }
+*/

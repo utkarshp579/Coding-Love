@@ -1,0 +1,70 @@
+// state of problem 1 variable hi so 1d array use ho jayega.
+
+class Solution {
+public:
+
+vector<int> dp;// competitive programmer jo given value hoti hi maximum like here 10^4 hi , to ye isi size ki arr bna dete hi
+
+int ftd(vector<int> arr, int i){// only one -ve , call stack.
+// base case
+    if(i == arr.size() - 1) return arr[i];// single house
+    if(i == arr.size() - 2) return max(arr[i],arr[i+1]);// 2house
+    // dp check
+    if(dp[i] != -1) return dp[i];
+    // function
+    return  dp[i] = max(arr[i] + ftd(arr,i+2),0 + ftd(arr,i+1));
+}
+
+int fbu(vector<int> arr){
+    int n = arr.size();
+    if(n==1) return arr[0];
+    dp.clear();
+    dp.resize(n);
+    // base case;
+    dp[n-1] = arr[n-1];
+    dp[n-2] = max(arr[n-1] ,arr[n-2]);
+    for(int i = n-3;i>=0;i--){
+        dp[i] = max(arr[i] + dp[i+2],0+dp[i+1]);
+    }
+    return  dp[0];
+}
+
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        // in top down solution
+        // dp.clear();// clearing if any garbage value;
+        // dp.resize(n+1,-1);// subproblem not yet computed.// initialization parameter may differ
+        return fbu(nums);
+    }
+};
+
+/*
+ recursion solution
+
+ int f(vector<int> arr, int i){
+    if(i == arr.size() - 1) return arr[i];// single house
+    if(i == arr.size() - 2) return max(arr[i],arr[i+1]);// 2house
+    return max(arr[i] + f(arr,i+2),0 + f(arr,i+1));
+}
+
+
+*/
+
+/* Top down solution
+vector<int> dp;// competitive programmer jo given value hoti hi maximum like here 10^4 hi , to ye isi size ki arr bna dete hi
+
+int ftd(vector<int> arr, int i){
+    if(i == arr.size() - 1) return arr[i];// single house
+    if(i == arr.size() - 2) return max(arr[i],arr[i+1]);// 2house
+    if(dp[i] != -1) return dp[i];
+    return  dp[i] = max(arr[i] + ftd(arr,i+2),0 + ftd(arr,i+1));
+}
+
+    int rob(vector<int>& nums) {
+        int n = nums.size();
+        dp.clear();// clearing if any garbage value;
+        dp.resize(n+1,-1);// subproblem not yet computed.// initialization parameter may differ
+        return ftd(nums,0);
+    }
+
+*/

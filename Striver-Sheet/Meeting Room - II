@@ -1,0 +1,59 @@
+/*
+scheduled meeting ke liye minimum room calculate krna hi.
+*/
+/*
+Logic:-
+    hum meetings k starting aur ending time ko 2 alag array me sort kr loong .
+    phir two pointer approach lagayenge.
+*/
+// anotheher approach --> 
+// create a large array , trave in given intervals, for starting do ++ in created array, do -- at end point,run a sum & calculate maximum value of it, also this variable will become 0 at end. ,
+
+// another approach with min heap
+#include<bits/stdc++.h>
+using namespace std;
+// 252 meeting wala question khud se kro.
+// 56 merge intervals, reduced interval
+
+
+
+
+int Solution::solve(vector<vector<int> > &A) {
+    // greedy with sorting.
+    vector<int> a ,b;
+    for(auto it : A){
+        a.push_back(it[0]);
+        b.push_back(it[1]);
+    }
+    sort(a.begin(),a.end());
+    sort(b.begin(),b.end());
+    int i = 0, j = 0,ans = 0,cnt = 0;
+    while(i<A.size()){
+        if(a[i]<b[j]){
+            i++;
+            cnt = i - j;
+            ans = max(cnt,ans);
+        }else j++;
+    }
+    return ans;
+}
+
+
+int solve2(vector<vector<int> > &A){
+    int n=A.size();
+    sort(A.begin(),A.end());
+        
+        priority_queue<int, vector<int>, greater<int>> heap;
+        int rooms = 0;
+        heap.push(A[0][1]);
+        rooms++;
+        for (int i = 1; i < n; i++) {
+            if (A[i][0] < heap.top()) {
+                rooms++;
+            } else {
+                heap.pop();
+            }
+            heap.push(A[i][1]);
+        }
+        return rooms;
+}

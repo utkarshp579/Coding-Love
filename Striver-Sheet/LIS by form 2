@@ -1,0 +1,36 @@
+class Solution {
+public:
+// tc = ( no of state) ( 1 + transition) == > (N)(N) N2
+
+// for 2 ending form , answer is at ending form , transition to calculate all previous.
+    vector<int> dp;
+int rec(int level, vector<int>& nums){
+    // best LIS ending at level by including the current index
+    // pruning
+    if(level < 0) return 0;
+    // base case;
+    if(dp[level] != -1) return dp[level];
+
+    // compute
+    int ans = 1;
+    for(int prev_taken = 0; prev_taken < level ; prev_taken++){
+        if(nums[prev_taken] < nums[level]){
+            ans = max(ans , 1 + rec(prev_taken, nums));
+        }
+    }
+
+    return dp[level] = ans;
+}
+
+    int lengthOfLIS(vector<int>& nums) {
+        int n = nums.size();
+        dp.resize(n+1,-1);
+        
+        int best = 0;
+        for(int i = 0; i< n; i++){
+            best = max(best , rec(i, nums));
+        }
+        return best;
+
+    }
+};

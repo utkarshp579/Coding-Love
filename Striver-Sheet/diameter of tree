@@ -1,0 +1,15 @@
+class Solution {
+public:// trees ke case me do recursion aur base case to agna hi hi.
+int maxd = 0;
+    int dfs(TreeNode* root){
+        if(root==NULL) return 0;// base case
+        int leftdepth = dfs(root->left);
+        int rightdepth = dfs(root->right);
+        maxd = max(maxd,leftdepth+rightdepth);// max length jo  hum upar return kr rhe hi wo right wali plus left wali ka sum hi hi , jab return krenge to + 1 kr denge.
+        return max(leftdepth,rightdepth)+1;//humhe kisi bhi situation me kya return krna hi ab tak  ki maximum depth + 1 to usse upar node ko. 
+    }
+    int diameterOfBinaryTree(TreeNode* root) {
+        int c = dfs(root);
+        return maxd;
+    }
+};

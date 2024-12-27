@@ -1,0 +1,36 @@
+class Solution {
+public:
+    vector<vector<int>> merge(vector<vector<int>>& intervals) {
+        if (intervals.size() == 1) {
+            return intervals;
+        }
+        vector<pair<int, int>> p; // also we can sort 2d vectors
+        // they are  sort on the basis of their first element, if that is equal
+        // , then based on next element.
+        for (int i = 0; i < intervals.size(); i++) {
+            // converting 2d vector into vector of pairs
+            // but we can convert the 2d vector , or vector of pairs into set of
+            // vector.
+            p.push_back({intervals[i][0], intervals[i][1]});
+        }
+        sort(p.begin(), p.end());
+        vector<vector<int>> ans;
+        int f = p[0].first, s = p[0].second; // p is vector, p[0] is a pair
+
+        for (int i = 0; i < p.size() - 1;
+             i++) { // we are using i+1 , so its important -1 in condition
+            vector<int> a(2);
+            if (s >= p[i + 1].first) {
+                s = max(s, p[i + 1].second); // merging intervals
+            } else {
+                a[0] = f;
+                a[1] = s;
+                ans.push_back(a);
+                f = p[i + 1].first;
+                s = p[i + 1].second;
+            }
+        }
+        ans.push_back({f,s});// we can put a vector {1,2,3} 0r {1,2} into vector, 
+        return ans;
+    }
+};

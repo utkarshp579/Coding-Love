@@ -1,0 +1,75 @@
+class Solution {
+public:
+// this solution i also though but i avoid as i fear of space complexity
+     int leastInterval(vector<char> &tasks, int n){
+        // building freq map and max heap
+        int freq[26] = {0};// instead of using the unorderd map, for fixed known number of character we can use array.
+        for(char &ch : tasks) freq[ch - 'A']++;
+        priority_queue<int> pq;
+        for(int  i = 0; i < 26;i++){
+            if(freq[i]) pq.push(freq[i]);
+        }
+
+        // core logic
+        int time = 0;
+        while(!pq.empty()){
+            int cycle = n + 1;// length of each cycle.
+            vector<int> store;// to rebuild the heap
+
+            int temp = 0;
+            while(cycle-- && !pq.empty()){
+                if(pq.top() > 1) store.push_back(pq.top() - 1);// element freq reduced by 1 in each cycle
+                // as pq.top>1 we need not to insert so we only pop and count temp.
+                pq.pop();
+                temp++;
+            }
+            for(int &x : store) pq.push(x);// rebuild the heap
+            time += (pq.empty() ? temp : n + 1);// IMP: if the pq is empty, it means all tasks have been completed
+                                                //, so we do not have to add time for the complete last cycle
+                                                //,  only add the time for completing the remaining tasks in that cycle
+        }
+        return time;
+     }
+
+};
+
+/*  
+// i find the approach fine but not working
+  int leastInterval(vector<char>& tasks, int n) {
+        unordered_map<char , int> mp;
+        for(auto it : tasks){
+            mp[it]++;
+        }
+        int ans = 0;
+        while(mp.size()){
+            int s = mp.size();
+            if(s > n){// fill all element   of map
+                for(auto it : mp){
+            cout<<s<<"size ,"<<n<<" ";
+                    // if(mp[it.first] == 0) {
+                    //     mp.erase(it.first);
+                    //     continue;
+                    // }
+                    cout<<it.first<<" "<<it.second<<"  ";
+                    mp[it.first]--;
+                    cout<<it.first<<" "<<it.second<<"  \n ";
+                    if(mp[it.first] == 0){
+                         mp.erase(it.first);
+                         cout<<mp.size()<<"errase\n";
+                    }
+                    ans++;
+                }
+            }else{// s < n , we need to fill idle
+            int t = n + 1;
+                for(auto it : mp){
+                    mp[it.first]--;
+                    if(mp[it.first] == 0) mp.erase(it.first);
+                    ans++;
+                    t--;
+                }
+                if(mp.size()) ans += t;
+            }
+        }
+        return ans;
+    }
+*/

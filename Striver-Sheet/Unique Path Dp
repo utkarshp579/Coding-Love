@@ -1,0 +1,46 @@
+class Solution {
+public:
+   // m , n are indexed for helper fun
+   // also little more optimisation could be done, in last squared box symmetry.
+   // dp[i][j] in tabulation is telling number of unique path from i, j to m,n
+    int helper(int  cr, int cc , int m, int n,vector<vector<int> > &dp){
+        if(cr == m && cc == n) return 1;
+        if(dp[cr][cc] != -1) return dp[cr][cc];
+        int down = 0, right = 0;
+        if(cr<m){
+            // go down
+             down =  helper(cr + 1, cc , m , n, dp);
+        }
+        if(cc<n){
+            // go right
+             right =  helper(cr , cc + 1 , m , n , dp);
+        }
+        // if(1) {// a symmetry optimisation can be done. sqaure at end.
+        //     int a = m - cr;
+        //     int b = n - cc;
+        //     int vr = m - b;
+        //     int vc = n - a;
+        //     if(vr<= m && vc <= n) dp[vr][vc] = down + right;
+        // }
+        return dp[cr][cc] = down + right;
+    }
+    int helper2(int m , int n){// m is no of rows
+    // buildup solution,
+    // we are knowing solutions of few basics , by using them we are finding solutions of others.
+        vector<vector<int>> dp(m,vector<int>(n,1));// dp[i][j] is telling no of way to reach i,j
+        dp[0][0] = 1;
+        for(int i = 0;i<m;i++) dp[i][0] = 1;// as there is only one way of reaching to top cells is going right.
+        for(int j = 0;j<n;j++) dp[0][j] = 1;
+        for(int i = 1;i<m; i++){
+            for(int j = 1;j < n ; j++){
+                dp[i][j] = dp[i-1][j] + dp[i][j-1];
+            }
+        }
+        return dp[m-1][n-1];
+    }
+    int uniquePaths(int m, int n) {// m, n are size
+        // vector<vector<int> > dp(m,vector<int> (n,-1));
+        // return helper(0,0,m - 1,n - 1,dp);
+        return helper2(m,n);
+    }
+};

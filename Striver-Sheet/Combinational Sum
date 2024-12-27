@@ -1,0 +1,36 @@
+class Solution {
+public:
+// I solved this backtrack problem very easily , it counts in backtrack problem
+// my thoughtprocess, firstly i made a map in my mind of recursion tree, then write base condition, and thinking oof only one step and later recursion did the work of other steps.
+    vector<vector<int>> ans;
+
+void backtrack(vector<int> &cand, int tar, int curr ,vector<int> &res,int idx){
+    if(curr>tar) return;
+    if(curr == tar){
+        // curr -= res.back();// backtrack
+        ans.push_back(res);
+        return;
+    }
+    for(int i = idx;i<cand.size();i++){
+        curr+=cand[i];
+        res.push_back(cand[i]); 
+
+        backtrack(cand,tar,curr,res,i);
+
+        curr-=cand[i];
+        res.pop_back();
+
+
+    }
+
+
+
+}
+    vector<vector<int>> combinationSum(vector<int>& cand, int tar) {
+        sort(cand.begin(),cand.end());// sorting is done to use unique function.
+        cand.erase(unique(cand.begin(),cand.end()),cand.end());
+        vector<int> res;
+        backtrack(cand,tar,0,res,0);
+        return ans;
+    }
+};

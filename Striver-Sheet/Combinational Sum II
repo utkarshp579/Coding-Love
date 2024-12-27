@@ -1,0 +1,41 @@
+class Solution {
+public:
+// see in this problem we try to solve the one level of recursion as per recTree , so we avoid the repeating value on that level, the repeated one could be on doen the line but not at same level.
+// i can maintain a set for each level
+    vector<vector<int>> ans;
+    set<vector<int>> st;
+    void backtrack(vector<int>& arr, int tar, int curr, vector<int>& res,
+                   int idx,int n) {
+        if (curr > tar)
+            return;
+        if (curr == tar) {
+            // curr -= res.back();// backtrack
+            // ans.push_back(res);
+            st.insert(res);
+            return;
+        }
+        for (int i = idx; i < arr.size(); i++) {
+            if( i>idx &&  arr[i]==arr[i-1]) continue;
+            // i was confused regarding above statement multiple time , without this 172 / 176 cases passed.
+            //imp of this line, suppose we have multiple 1 suppose 3 , then with only the first one we will be able take all ans that include all one or that include few one suppose 2, then what is need of doing it with other 1.
+            curr += arr[i];
+            res.push_back(arr[i]);
+
+            backtrack(arr, tar, curr, res, i+1,n);
+
+            curr -= arr[i];
+            res.pop_back();
+        }
+    }
+
+    vector<vector<int>> combinationSum2(vector<int>& arr, int tar) {
+        sort(arr.begin(), arr.end());
+        // arr.erase(unique(arr.begin(), arr.end()), arr.end());// giving only unique values, by erasing duplicates. ans also unique works only in sorted  array
+        vector<int> res;
+        int n = arr.size();
+        backtrack(arr, tar, 0, res, 0,n);
+        for(auto it : st) ans.push_back(it);
+        return ans;
+    }
+
+};

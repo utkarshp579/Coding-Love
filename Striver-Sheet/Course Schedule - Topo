@@ -1,0 +1,51 @@
+class Solution {
+public:
+// a b --> b should be done first b--> a
+
+       bool isCyclic(int V, vector<vector<int>>& adj) {// now adj is coming
+        // code here
+        vector<int> indegree(V,0);
+        // cout<<"Size is : "<<adj.size()<<endl;
+        for(int i = 0; i < V ; i++){
+            for(auto it : adj[i]){
+                // cout<<it<<" ";
+                // cout<<adj[i][0]<<" ";
+                indegree[it]++;
+                // if(it == adj[i].size() - 1) break;
+            }
+        }
+        
+        queue<int> q;
+        for(int i = 0;i < V ; i++){
+            if(!indegree[i]) q.push(i);
+        }
+        // cout<<q.size();
+        
+        int cnt = 0;// have vector here if  we want to use topo vector
+        
+        while(!q.empty()){
+            int  node = q.front();
+            q.pop();
+            cnt++;
+            
+            for(auto it : adj[node]){
+                indegree[it]--;
+                if(!indegree[it]) q.push(it);
+            }
+        }
+        // cout<<cnt<<" "<<V;
+        return V == cnt;// cnt same then no cycl, topo can be find
+    }
+    // can finish  whentopo sort can be find
+    // 
+
+// i think pehle humhe vector of vector jo ki humhe yaha pr edges di hi , usse humhe adjacency list bnani padegi.
+// this is turning point to convert edges into adjacency list
+    bool canFinish(int num, vector<vector<int>>& pre) {
+        vector<vector<int>> adj(num);
+         for(int i = 0; i < pre.size() ; i++){
+            adj[pre[i][1]].push_back(pre[i][0]);
+        }
+        return isCyclic(num, adj);
+    }
+};

@@ -1,0 +1,80 @@
+// quickselect was used in finding kth smallest element , which also can be found by heap, but this one is efficient.
+
+
+//{ Driver Code Starts
+#include <stdio.h>
+#include <bits/stdc++.h>
+using namespace std;
+
+/* Function to print an array */
+void printArray(int arr[], int size)
+{
+    int i;
+    for (i=0; i < size; i++)
+        printf("%d ", arr[i]);
+    printf("\n");
+}
+
+// } Driver Code Ends
+class Solution
+{
+    public:
+    //Function to sort an array using quick sort algorithm.
+    void quickSort(int arr[], int low, int high)
+    {
+        if(low<high){
+            int pIndex = partition(arr,low,high);// an index which contain the pivot indexed element at its right place.
+            // which is initially at pivot point selected by us.
+            quickSort(arr, low , pIndex - 1);
+            quickSort(arr, pIndex+1 , high);
+        }
+    }
+    
+    public:
+    int partition (int arr[], int low, int high)
+    {
+       int pivot = arr[low];
+       int i = low;
+       int j = high;
+       while(i<j){
+           // to note we are making = elements in left partition.
+           
+           
+           // check 1 which helps to find the first element which is higher than pivot to change it.
+           while(arr[i]<=pivot && i<= high - 1){
+               i++;
+           }// after this i is pointing on defaulted piece , if swapped then means i<j then again it comes to defaulted piece
+           
+           // check 2 to find the lowest element from back side to swap properly.
+           while(arr[j]>pivot && j>=low + 1){
+               j--;
+           }
+           if(i<j) swap(arr[i],arr[j]);
+           
+       }
+       
+       swap(arr[low],arr[j]);// pivot, we are swapping with j beacuase j is consisting of that element that should be swapped with left parted array.
+       // and also pivot would be in between left and right partitioned array.
+       
+       
+       return j; // swapped index.
+    }
+};
+
+
+//{ Driver Code Starts.
+int main()
+{
+    int arr[1000],n,T,i;
+    scanf("%d",&T);
+    while(T--){
+    scanf("%d",&n);
+    for(i=0;i<n;i++)
+      scanf("%d",&arr[i]);
+      Solution ob;
+    ob.quickSort(arr, 0, n-1);
+    printArray(arr, n);
+    }
+    return 0;
+}
+// } Driver Code Ends
