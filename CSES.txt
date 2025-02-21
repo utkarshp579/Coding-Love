@@ -1,0 +1,5 @@
+int ki multiply kabhi bhi ho rhi , then it should be stored in long long . 
+
+
+Bit Manipulation
+    if(n & 1)  --> checking if n is odd. 
