@@ -1,0 +1,48 @@
+Simple Variation could be solved by Greedy , where [0  , n - 1 ] are there.
+
+
+Given an array arr (can have duplicates, not necessarily a permutation), find the maximum number of chunks such that if you sort each chunk individually and concatenate, the result is the sorted array.
+
+❓ What changes would be needed if arr is not guaranteed to be a permutation — it can contain duplicates and out-of-order values?**
+Variation:-
+If current element ≥ top of stack → start new chunk → push it.
+Else → the current element is too small → it must be merged with previous chunks:
+Pop elements until current ≥ top.
+Track the maximum among all popped values.
+Push that max back → new merged chunk.
+
+Q1. Why store max during merge?
+✔ Because:
+All popped elements are part of one bigger chunk (they violate ordering).
+We store the maximum to represent the entire chunk.
+This ensures:
+Sorting this chunk places all its elements before the next chunk.
+The next chunk won’t contain a smaller number that should have been earlier.
+Q2. Why is stack size = number of chunks?
+✔ Because:
+Each push represents a valid chunk (independent, order-preserving).
+We merge only when an element cannot be placed independently.
+So each remaining element in the stack is the maximum of one valid chunk.
+Hence, total elements in stack = number of sortable chunks.
+
+int maxChunksToSorted(vector<int>& arr) {
+    stack<int> st;
+
+    for (int val : arr) {
+        // Start a new chunk if current is ≥ top
+        if (st.empty() || val >= st.top()) {
+            st.push(val);
+        } else {
+            // Merge chunks: pop until current ≥ top
+            int maxInChunk = st.top();
+            st.pop();
+            while (!st.empty() && st.top() > val) {
+                st.pop();
+            }
+            // Push back max of merged chunk
+            st.push(maxInChunk);
+        }
+    }
+
+    return st.size();
+}
