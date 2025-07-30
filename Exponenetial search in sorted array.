@@ -1,0 +1,78 @@
+// Simple Binary Search also works. but required checks.
+// Exponential search and Binary search , both codes are written below.
+
+🔁 Analogy:
+Imagine a library with infinite shelves. You want to find book #137. You:
+Check shelf 1 → not there
+Jump to shelf 2 → not there
+Jump to 4 → not there
+Jump to 8 → not there
+Jump to 16 → not there
+Jump to 32 → not there
+Jump to 64 → not there
+Jump to 128 → not there
+Jump to 256 → too far
+→ So now search between 128 and 256 with binary search.
+
+
+
+int get(int index); // Already defined elsewhere
+
+int searchInfiniteRotatedArray(int target) {
+    int low = 0, high = 1;
+
+    // Step 1: Exponential Search to find high bound
+    while (get(high) != INT_MAX && get(high) < target) {
+        low = high;
+        high *= 2;
+    }
+
+    // Step 2: Modified Binary Search in rotated array
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        int val = get(mid);
+
+        if (val == target) return mid;
+        if (val == INT_MAX) {
+            high = mid - 1;
+            continue;
+        }
+
+        // Normal rotated sorted binary search logic
+        int lval = get(low), rval = get(high);
+        if (lval <= val) { // Left half sorted
+            if (target >= lval && target < val)
+                high = mid - 1;
+            else
+                low = mid + 1;
+        } else { // Right half sorted
+            if (target > val && target <= rval)
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+    }
+
+    return -1;
+}
+
+
+
+
+int searchWithMaxBinary(int target) {
+    int low = 0, high = INT_MAX - 1;
+
+    while (low <= high) {
+        int mid = low + (high - low) / 2;
+        int val = get(mid);
+
+        if (val == target) return mid;
+        if (val == INT_MAX || val > target) {
+            high = mid - 1;
+        } else {
+            low = mid + 1;
+        }
+    }
+
+    return -1;
+}
