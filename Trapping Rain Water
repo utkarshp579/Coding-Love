@@ -1,0 +1,55 @@
+class Solution {
+public:
+// space optimization , 
+// prev aur next ka use krke humhe min chahiye , to hum direct hi min nikal lenge , next wale ko jab calculate kr rhe hi, 
+// but code simple hi thik h as fast to write.
+    int trap(vector<int>& height) {
+        // prev greatest element. 
+        int n = height.size();
+        vector<int> prev(n , -1) , next(n , - 1);
+
+        stack<int> st;
+
+        for(int i = 0 ; i < n ; i++){
+            
+            // finding greatest, = wala case hi greatest hoga , usse choti value to store nhi hogi
+            while(!st.empty() && st.top() < height[i]){
+                st.pop();
+            }
+
+            prev[i] = st.empty() ? -1 : st.top();
+
+            if(st.empty()) st.push(height[i]);
+
+        }
+
+        st = stack<int> ();
+        
+        for(int i = n - 1 ; i >= 0  ; i--){
+            
+            // finding greatest, = wala case hi greatest hoga , usse choti value to store nhi hogi
+            while(!st.empty() && st.top() < height[i]){
+                st.pop();
+            }
+
+            next[i] = st.empty() ? -1 : st.top();
+
+            if(st.empty()) st.push(height[i]);
+
+        }
+        int ans = 0;
+        for(int i = 0 ; i < n ; i++){
+            int pre = prev[i] , nex = next[i];
+            int hei = min(pre, nex);
+            if(hei > height[i]){
+                ans += hei - height[i];
+            } 
+        }
+
+        // for(int i = 0 ; i < n ; i++) cout<<prev[i]<<" ";
+        // cout<<endl;
+        // for(int i = 0 ; i < n ; i++) cout<<next[i]<<" ";
+
+        return ans;
+    }
+};
