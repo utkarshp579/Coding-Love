@@ -1,0 +1,7 @@
+Primarily Used in Centralized Management System :- one and only one instance  
+
+Mostly Used :- Logging , DB connections. 
+
+
+
+Make private Constructor 

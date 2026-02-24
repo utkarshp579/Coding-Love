@@ -1,0 +1,15 @@
+UML :- https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbXZjQXN6N2tUSXhYZnBLbXY0WWJ5bXlhaklpUXxBQ3Jtc0trVTF6X1BZQ2tTRjFDa0MyM3hSVTdWb0Y0eW95Yks3Y3pUT1lBcTZjUnhjRzRuSE5ScERrR3JNMUVRR3pJVkU0S29NN25sOGxsX1RlYW83LWVEZy1YT2UxYmNPSUFzX05CZGNkSmVWeEdDa1puWjY5cw&q=https%3A%2F%2Fwww.coursera.org%2Flearn%2Fobject-oriented-design&v=OhCp6ppX6bg
+
+
+DRY :- 
+YAGNI :- You aren't gonna need it
+KISS :- Keep it simple stupid
+SOLID :- 
+
+
+Signleton
+Factory
+Strategy
+Observer
+Builder
+Decorator

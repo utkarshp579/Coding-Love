@@ -1,0 +1,65 @@
+Creational Patterns
+    Concern: How objects are created
+
+    Used when object creation becomes complex or needs control.
+
+    Patterns:
+    - Singleton
+    - Factory Method
+    - Abstract Factory
+    - Builder
+    - Prototype
+
+    When you need them:
+    - You don’t want "new" scattered everywhere
+    - Object creation logic varies
+    - You need flexible instantiation
+
+
+
+Structural Patterns
+    Concern: How classes and objects are composed
+
+    Used when you need flexibility in structure.
+
+    Patterns:
+    - Adapter
+    - Bridge
+    - Composite
+    - Decorator
+    - Facade
+    - Flyweight
+    - Proxy
+
+    When you need them:
+    - Wrapping existing code
+    - Adding behavior dynamically
+    - Simplifying complex subsystems
+    - Reducing memory usage
+
+
+
+Behavioral Patterns
+    Concern: How objects interact
+
+    Used when communication becomes complex.
+
+    Patterns:
+    - Observer
+    - Strategy
+    - Command
+    - State
+    - Template Method
+    - Chain of Responsibility
+    - Mediator
+    - Iterator
+    - Memento
+    - Visitor
+    - Interpreter
+
+    When you need them:
+    - Runtime behavior change
+    - Notification systems
+    - Request pipelines
+    - Undo systems
+    - Workflow engines
