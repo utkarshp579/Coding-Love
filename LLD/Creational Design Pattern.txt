@@ -1,0 +1,57 @@
+They help in managing how bojects are created. 
+
+Instead of creating object all over your code,
+Creational patterns provide a smart , controlled way to handle the object creation process.
+
+
+They help centralize , & stramline object creation. 
+    reducing duplication of work by making them abstract.
+
+There are 5 famous creational pattern.
+
+1. Singleton Patterns :- V.V.imp
+- Think of it like the factory's manager
+- ensure that only one person is incharge of making the most important product.
+it ensures only one instance of a class throughout the entire system.
+- this prevent resource wastage & ensure consistent behavior
+Ex - A single database connection shared across the whole system. 
+
+
+2. Factory Method pattern :- Imp.
+-  think of it as an automatic assembly line
+- the factory knows how to produce different types of products
+instead of specifying the exact product type, you simply call the factory method to handle it.
+Example :- A car factory that creates different car models dynamically
+
+3. Abstract Factory Patterns : Not that important
+- Think of it as a Mega Factory
+- the factory produces multiple related products
+- instead of creating a single product , it creates families of objects ( like an entire furniture set). 
+Ex - A furniture factory that creates chairs , tables , and sofas together
+    Here table could be a factory creating different kinds of table.
+
+4. Builder Pattern :- V. imp
+Think of it as custom order system 
+When creating complex products ( like a custom - built car ) you don't want to handle it one go.
+the builder pattern lets you break down the creation process into steps.
+- Ex : Building a luxury car with step by step feature.
+
+
+5. Prototype Pattern
+think of it as copying a ready-made product
+- instead of creating objects from scratch, you clone an existing one.
+saves time and resources.
+- creating clones of games character in a game development system,j
+
+
+
+why to use?
+- simplify the object creation
+- flexibility
+- maintainbility
+
+Use :- 
+- Database Connections ( Singleton )
+- creating UI Elements ( Abstract Factory )
+- Cloning Objects ( Cloning Objects )
+

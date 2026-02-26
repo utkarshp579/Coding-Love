@@ -1,0 +1,64 @@
+In LLD , we not want thing to be tighly coupled , more dependency.
+
+these pattern don't just create objects; they explain how to assemble objects into larger structure, while keeping them flexible and efficient
+
+
+The problem it is solving :- 
+    Imagine you're tasked with building a large application, and you have dozens of components that need to work together - APIs, databases, user interfaces, and more. 
+
+    without a proper system to manage these interactions , your code can quickly become a tangled web of dependencies. 
+
+    Making changes might break multiple components becasuse of tightly coupled relationships.
+
+
+Structural patterns assign roles to objects and define their relationships
+
+    1. Adapter Pattern : The Universal Translator
+        Imagine you have a piece of machinery that workson a specific type of power supply, but you're in a country with a different standard. 
+
+        You use an adapter to make it compatible. 
+        the adapter pattern act as a bridge between two incompatible iterfaces, allowing them to work together altering their underlying code. 
+
+    2. Bridge Pattern :- Separation of Concerns
+        Picture a suspension bridge. the cables support the bridge deck, but the two components are separate and can be changed independently. 
+
+        The Bridge pattern lets you split a large class into two separate heirarchies abstraction and implemetation - which can be developed independently of each other. 
+
+    3.  Composite Pattern: Building a Hierarchy 🌳
+
+        Think of a tree. A tree is composed of branches, and each branch can have smaller branches or leaves. Despite the complexity, the whole tree is treated as a single unit.
+
+        The Composite Pattern lets you treat individual objects and groups of objects uniformly, making it easier to work with complex hierarchies.
+
+        ‍
+
+    4. Decorator Pattern: Customizing On the Fly 🎨
+
+        Imagine decorating a cake. You start with a plain cake and add layers of frosting, sprinkles, and designs, each enhancing the final product without altering the base.
+
+        The Decorator Pattern allows you to dynamically add new behaviors or responsibilities to objects without modifying their structure by placing these objects inside special wrapper objects that contain the behaviors.
+
+    ‍
+
+    5. Facade Pattern: Simplifying Complexity 🚪
+
+    Imagine walking into a smart home. Instead of controlling each device manually, you press a single button to activate the entire system.
+
+    The Facade Pattern provides a simplified interface to a complex subsystem, making it easier to interact with without dealing with all the underlying details.
+
+    ‍
+
+    6. Flyweight Pattern: Sharing Resources Efficiently 💾
+
+    Think of a library with hundreds of books. Instead of creating a new shelf for every copy of a book, the library stores a single copy and lends it out to multiple readers.
+
+    The Flyweight Pattern minimizes memory usage by sharing common parts of objects while allowing unique details for each instance.
+
+    ‍
+
+    7. Proxy Pattern: The Middleman 🕴️
+
+    Imagine hiring a personal assistant to handle your calls, emails, and appointments. The assistant represents you but doesn’t require you to interact directly.
+
+    The Proxy Pattern provides a placeholder or surrogate for another object, controlling access to it or adding extra behavior.
+
