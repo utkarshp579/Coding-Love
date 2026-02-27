@@ -13,7 +13,9 @@ Think of it as a newsfeed on social media.
 No need to check in every time.
 
 • Strategy Pattern 🎯:
-It’s like having a set of game plans for different situations. For example, if you’re playing soccer, your team could use different strategies depending on whether you’re attacking or defending. The strategy pattern lets you switch between behaviors (strategies) without changing the object’s class.
+It’s like having a set of game plans for different situations. 
+For example, if you’re playing soccer, your team could use different strategies depending on whether you’re attacking or defending. 
+The strategy pattern lets you switch between behaviors (strategies) without changing the object’s class.
 
 • Command Pattern 🎮:
 This one’s like the remote control for your TV. You can press different buttons to make the TV do different things, but each button press is treated as a separate command. It encapsulates a request as an object, which lets you execute, undo, or queue up commands.
@@ -30,7 +32,7 @@ This pattern is like changing your mood depending on the situation! The object c
 • Template Design Pattern 📝:
 Think of this pattern like a recipe. It provides a general structure (template) for a process, but allows you to define some specific steps (like seasoning or garnish in cooking). It’s a great way to ensure consistent flow while letting flexibility on the details.
 
-• Iterator Design Pattern 🧳:
+• Iterator Design Pattern 🧳: 
 It’s like going through a line of items in a store. With this pattern, you can iterate through a collection of items, like a list or array, without needing to worry about the details of how the collection is structured.
 
 • Visitor Design Pattern 👨‍💻:
@@ -39,4 +41,5 @@ This pattern allows you to add new operations to existing objects without changi
 • Memento Design Pattern 🗂️:
 Imagine you want to save a game at a certain point and return to that point later. The memento pattern lets you capture and store an object’s state, so you can revert back to it without exposing its internal details.
 
-Behavioral Design Patterns are a great way to keep your code clean, efficient, and adaptable. They focus on how objects interact, ensuring smooth communication while reducing dependencies.
+Behavioral Design Patterns are a great way to keep your code clean, efficient, and adaptable.
+They focus on how objects interact, ensuring smooth communication while reducing dependencies.
