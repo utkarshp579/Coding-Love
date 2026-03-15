@@ -1,9 +1,12 @@
 UML :- https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbXZjQXN6N2tUSXhYZnBLbXY0WWJ5bXlhaklpUXxBQ3Jtc0trVTF6X1BZQ2tTRjFDa0MyM3hSVTdWb0Y0eW95Yks3Y3pUT1lBcTZjUnhjRzRuSE5ScERrR3JNMUVRR3pJVkU0S29NN25sOGxsX1RlYW83LWVEZy1YT2UxYmNPSUFzX05CZGNkSmVWeEdDa1puWjY5cw&q=https%3A%2F%2Fwww.coursera.org%2Flearn%2Fobject-oriented-design&v=OhCp6ppX6bg
 
-
-DRY :- 
-YAGNI :- You aren't gonna need it
-KISS :- Keep it simple stupid
+DRY (Don't Repeat Yourself): This principle encourages minimizing code duplication. 
+    Instead of repeating logic, abstract it into reusable functions or modules. 
+    This makes code easier to maintain and reduces errors.
+YAGNI (You Aren't Gonna Need It): Only implement features or code when they are actually required. 
+    Avoid adding functionality "just in case," as it increases complexity and maintenance without real benefit.
+KISS (Keep It Simple, Stupid): Strive for simplicity in design and implementation. 
+    Simple solutions are easier to understand, maintain, and debug. Avoid unnecessary complexity or overengineering.
 SOLID :- 
 
 

@@ -18,16 +18,23 @@ For example, if you’re playing soccer, your team could use different strategie
 The strategy pattern lets you switch between behaviors (strategies) without changing the object’s class.
 
 • Command Pattern 🎮:
-This one’s like the remote control for your TV. You can press different buttons to make the TV do different things, but each button press is treated as a separate command. It encapsulates a request as an object, which lets you execute, undo, or queue up commands.
+This one’s like the remote control for your TV. 
+You can press different buttons to make the TV do different things, but each button press is treated as a separate command.
+It encapsulates a request as an object, which lets you execute, undo, or queue up commands.
 
 • Chain of Responsibility Pattern 🔗:
-Imagine you have a series of help desks for tech support. If the first person can’t solve the problem, they send it to the next one. This pattern allows passing a request along the chain, where each handler has a chance to process it or pass it on.
+Imagine you have a series of help desks for tech support.
+If the first person can’t solve the problem, they send it to the next one. 
+This pattern allows passing a request along the chain, where each handler has a chance to process it or pass it on.
 
 • Mediator Design Pattern 🤝:
-It’s like having a central coordinator to facilitate communication between different parties. In a team project, instead of everyone talking directly to each other, everyone talks to a project manager (mediator), making the process smoother.
+It’s like having a central coordinator to facilitate communication between different parties.
+In a team project, instead of everyone talking directly to each other, everyone talks to a project manager (mediator), making the process smoother.
 
 • State Design Pattern 🎭:
-This pattern is like changing your mood depending on the situation! The object can change its behavior based on its current state, without needing to rewrite the code for every situation. It’s perfect when an object has a lot of conditional behavior.
+This pattern is like changing your mood depending on the situation! 
+The object can change its behavior based on its current state, without needing to rewrite the code for every situation. 
+It’s perfect when an object has a lot of conditional behavior.
 
 • Template Design Pattern 📝:
 Think of this pattern like a recipe. It provides a general structure (template) for a process, but allows you to define some specific steps (like seasoning or garnish in cooking). It’s a great way to ensure consistent flow while letting flexibility on the details.
