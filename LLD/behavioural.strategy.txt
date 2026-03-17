@@ -1,0 +1,8 @@
+https://codewitharyan.com/tech-blogs/strategy-design-pattern
+
+Use Cases :- 
+    Payment 
+    Sorting Algorithm
+    Shipping costs ( Pricing Strategy )
+
+Can add any new behavior without modifying

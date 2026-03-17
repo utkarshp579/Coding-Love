@@ -1,0 +1,2 @@
+Break it Down the code. 
+Factory , observer, 
