@@ -1,0 +1,9 @@
+java is cross platform , slower than cpp.
+
+firstly it converted into Intermediate language , then this IL get converted into ML for execution depending on OS.
+this compile happen during run time , hence this is called as JIT compiler
+
+JDK is developer kit , containing compiler and all other thing for developer. 
+whit JVM is for user end under JDK for running the program.
+
+also here main function will also be within some class. 
