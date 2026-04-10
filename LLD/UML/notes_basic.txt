@@ -1,1 +1,72 @@
 https://www.youtube.com/watch?v=6XrL5jXmTwM
+
+LucidChart Application for UML diagram making. 
+
+Class -> 
+
+Attributes :- a significant piece of data containing values that describe each instance of that class. 
+    Also known as fields , variables, or properties. 
+        - name: string
+        - age: int
+        - id: int
+
+Methods :- also known as operations or functions. 
+    Allow you to specify any behavioral features of any Class
+    Start with lowercase
+        -setName(var , var): string
+        -setAge(): int
+
+Visiblility :- 
+    - private
+    # protected
+    + public
+    ~ package / default
+
+Abstract class are written with << >> or by using italic font
+    Abstract classes are used to instantiate the class. 
+    helps us to follow the dry principle. 
+    Abstract class are not instantiated itself.
+    Abstract classes are just a way to simplify thing and keep the code dry. 
+        simplify thing , means we can inherit from them.
+        For My doubt :- if you are also been able to use parent class , then its good. else that would be an abstract classes. 
+        Very helpful in real world coding. 
+
+Inheritance draw by hollow traingular arrow pointing from where it is being inherited.
+
+Association relationship :-  no dependency in relationship.
+    represented by line. 
+    A simple relationship. 
+
+Aggregation relationship:- represents the relationship the whole and its part. 
+    A relationship that can exists outside the whole is Aggregation
+    Noted by open diamond. 
+    Class & student. 
+    Diamond side will faced to class, line side will student side. 
+
+    Both can exist in seprate also. 
+
+Composition :- when a child object  wouldn't be able to exist without its parent object.
+    Ex- customers and orders, if customers destroyed, order of that customer will be destroyed. 
+    Noted by closed diagram 
+        Diamond will face to independent object , like customer in above example. 
+
+Multiplicity :- allows you to set numerical constraints on relationships. 
+    0..1 --> optional relationship , can b zero means no relationship , can be 1.
+    n fixed number specific number , could be 1
+    0..*   --> zero to many , can be zero , can be many. 
+    1..*   ->> one to many. 
+    m..n  ---> specific range
+
+Realization :- 
+    Interfaces are connected with dooted line and simple arrow. arrow facing on interface side. 
+    
+
+
+Has a --> aggreation 
+
+
+is a --> inheritance.
+
+
+
+Generalization :- shows inheritance
