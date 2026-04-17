@@ -1,0 +1,7 @@
+6 5
+2 1 0 4 3 7
+query 1 4
+update 2 5
+query 0 2
+update 5 0
+query 3 5
