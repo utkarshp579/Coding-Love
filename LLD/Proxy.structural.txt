@@ -1,0 +1,6 @@
+Use cases:- 
+    1. Access Control
+        restrict access to sensitive operations based on permission.
+
+    2. Pre-Post processing.     
+        

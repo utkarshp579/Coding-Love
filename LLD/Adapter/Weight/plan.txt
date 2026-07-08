@@ -1,0 +1,7 @@
+Weight Machine Adapter Plan
+
+1. Create a target interface named WeightMachine for the client.
+2. Keep the legacy OldWeightMachine unchanged so it still returns pounds.
+3. Add WeightMachineAdapter to translate pounds into kilograms.
+4. Make Person depend on WeightMachine, not on the old class directly.
+5. Add a demo class to show the end-to-end flow.

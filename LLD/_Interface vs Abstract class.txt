@@ -1,0 +1,79 @@
+Interface vs Abstract Class
+---------------------------
+
+Purpose
+- Interface: Defines a contract (a set of capabilities/roles) without prescribing how they must be implemented. Use interfaces for type abstraction, multiple inheritance of type, and API boundaries.
+- Abstract class: Defines a base class that can provide shared state and common implementation in addition to abstract methods. Use abstract classes when subclasses share behavior or internal state.
+
+Key Differences
+- Multiple inheritance: A class can implement many interfaces but can extend only one class (abstract or not).
+- State and constructors: Abstract classes can have instance fields, constructors, and non-abstract methods that access state. Interfaces cannot have instance fields (only static final constants) and do not have instance constructors.
+- Method types: Interfaces may declare abstract methods, default methods, and static methods (since Java 8). Abstract classes can have concrete (non-abstract) and abstract methods, with any visibility (private/protected/public).
+- Access control: Abstract classes can expose protected members for subclasses; interface members are implicitly public (except private methods allowed since Java 9 for helper methods inside interfaces).
+- Evolution: Adding methods to interfaces used to be breaking; since Java 8 you can add `default` methods to evolve interfaces safely in many cases, but abstract classes still offer more flexible evolution when you need shared state.
+
+When To Use Which (Practical Rules)
+- Prefer interface when:
+	- You need a pure contract/role ("can-do").
+	- You expect many unrelated classes to implement the behavior.
+	- You want multiple inheritance of type (mixins, callbacks, listeners).
+	- You are designing public APIs or libraries where implementation will vary.
+- Prefer abstract class when:
+	- You have common code to share across subclasses (helper methods, default state).
+	- You need to control inheritance (provide protected helpers, constructors).
+	- Subclasses form a clear hierarchy and share implementation details.
+
+Design heuristics to build instinct
+- Ask: "Do I need to share state or implementation?" If yes, lean abstract class; if no, lean interface.
+- Think in roles vs kinds:
+	- Role (`interface`): "This object can fly", "This object is serializable" — many unrelated types can have this.
+	- Kind (`abstract class`): "This is a type of Vehicle" with shared fields like `speed` and common methods.
+- Consider future evolution: If you need to add new behavior later that requires state or protected helpers, an abstract class is easier to evolve. If you need broad adoption across many classes and multiple inheritance, use an interface.
+- Favor composition over inheritance: Even when an abstract class seems convenient, ask whether a reusable helper or composition would be safer and more flexible.
+- Prefer `interface + default` sparingly: default methods help evolve interfaces but can hide complexity — use them for reasonable defaults, not heavy shared state.
+
+Examples
+- Interface example (role):
+		public interface Printable {
+				void print();
+		}
+
+		public class Report implements Printable {
+				@Override
+				public void print() { System.out.println("Report"); }
+		}
+
+- Abstract class example (shared implementation/state):
+		public abstract class Animal {
+				protected String name;
+				protected Animal(String name) { this.name = name; }
+				public String getName() { return name; }
+				public abstract void speak();
+		}
+
+		public class Dog extends Animal {
+				public Dog(String name) { super(name); }
+				@Override
+				public void speak() { System.out.println("Woof"); }
+		}
+
+When you can't decide
+- Start with an interface if you're designing a public API or a role — it's the least-restrictive choice.
+- If you find yourself duplicating utility code across implementations, consider introducing an abstract base class (or a default method / helper class) and refactor.
+- Use tests and small refactors: it's safe to introduce an abstract class later (by having implementations extend it) but converting an existing class hierarchy to an interface-only design may need more refactor.
+
+Quick checklist
+- Need multiple inheritance of behavior → use `interface`.
+- Need shared mutable state or protected helpers/constructors → use `abstract class`.
+- Designing a library API → usually `interface` (with documented evolution strategy).
+- Implementing a family of closely related types with shared code → `abstract class`.
+
+Further tips
+- Use `@FunctionalInterface` for single-method interfaces to enable lambdas.
+- Keep interfaces focused: small, composable behaviors are easier to implement and reuse.
+- Prefer `final` classes when exposing concrete implementations you don't want extended.
+
+Summary
+- Interface = contract/role; lightweight and flexible.
+- Abstract class = base type with shared implementation/state; fewer implementers but more control.
+

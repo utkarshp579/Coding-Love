@@ -1,0 +1,59 @@
+@Override
+- Use: Annotation placed above a method to indicate it overrides a method from a superclass or implements a method from an interface.
+- When to use: Add `@Override` when you intend to override a superclass method (recommended). Since Java 6 it is also valid when implementing an interface method — it enables compile-time checking that the method signature really matches.
+- Limitations / notes:
+	- Applies only to methods (not to constructors, fields or classes).
+	- It's a compile-time aid only; it does not change runtime behavior.
+	- If the annotated method's signature doesn't match any supertype method, the compiler reports an error — this prevents accidental overloads.
+
+Example:
+		@Override
+		public String toString() {
+				return "...";
+		}
+
+static
+- Use: Modifier for fields, methods, and nested classes that makes the member belong to the class rather than any instance.
+- When to use: Use `static` for constants (`static final`), utility/helper methods, factory methods, or when a single shared field should exist across all instances.
+- Limitations / notes:
+	- Static methods cannot access instance (`non-static`) fields or methods directly; they have no `this` reference.
+	- Static members are resolved by the class (not polymorphically). Static methods are hidden, not overridden, by subclasses.
+	- Static nested classes cannot access outer instance members without an explicit reference.
+	- You can declare `static final` fields (constants). `static` may be combined with other modifiers (e.g., `private static`), but `static` cannot be used for top-level classes (only nested).
+
+Example:
+		public class Util {
+				public static int add(int a, int b) { return a + b; }
+				public static final String APP_NAME = "MyApp";
+		}
+
+final
+- Use: Modifier for variables, methods, and classes with different semantics:
+	- `final` variable: value/reference cannot be reassigned after initialization. For object references, the object may still be mutable.
+	- `final` method: cannot be overridden by subclasses.
+	- `final` class: cannot be subclassed.
+- When to use: Use `final` to enforce immutability of references, to prevent overriding for security/stability reasons, or to mark utility/value classes as non-extendable.
+- Limitations / notes:
+	- `final` does not make an object immutable — it only prevents reassignment of the reference.
+	- Blank `final` fields must be definitely assigned exactly once, either inline or in every constructor.
+	- `final` methods cannot be `abstract` (contradictory) and `final` classes cannot be `abstract`.
+	- `static final` with a compile-time constant expression produces a constant that may be inlined by the compiler.
+
+Example:
+		public final class Constants {
+				public static final int MAX = 100;
+		}
+
+		public class Base {
+				public final void doNotOverride() { }
+		}
+
+		public class Example {
+				final int x = 5; // cannot reassign x
+		}
+
+Quick tips
+- Prefer `@Override` on all overriding methods to catch signature mistakes.
+- Use `static` for class-level utilities and shared state; avoid mutable `static` fields where possible.
+- Use `final` to express intent: immutable bindings, non-overridable methods, and non-extendable classes.
+

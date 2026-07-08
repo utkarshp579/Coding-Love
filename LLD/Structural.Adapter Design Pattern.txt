@@ -1,0 +1,17 @@
+1. Power Adapter and Socket.
+    Client want to use existing interface , but they are not compatible with socket. thats where we need adapter/
+    adapter know what client wanted and can interact with socket
+
+2. XML and JSON parser.
+    Conversion Logic are implemented by this pattern. 
+
+
+3. Weight machine 
+
+
+Interview question :- How you deal with data if you are getting in another format.
+ we will use adapter design pattern. 
+
+
+Definition :- 
+    the adapter pattern act as a bridge between two incompatible iterfaces, allowing them to work together altering their underlying code. 

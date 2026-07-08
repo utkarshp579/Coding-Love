@@ -1,0 +1,7 @@
+Implementation plan for Charger Adapter example
+
+1. Define the target interface USBCCharger that the phone expects.
+2. Implement the legacy class MicroUSBCharger with its own charging method.
+3. Create USBAdapter to wrap MicroUSBCharger and translate USB-C requests into Micro-USB charging.
+4. Implement Phone so it depends only on USBCCharger.
+5. Add ChargerAdapterDemo to show the full flow from phone to adapter to legacy charger.

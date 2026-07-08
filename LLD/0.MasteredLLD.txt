@@ -18,3 +18,8 @@ Strategy
 Observer
 Builder
 Decorator
+
+
+
+"legacy system" in system design, 
+    Existing code or component that we cannot or should not modify, but still need to integrate with newer code.
