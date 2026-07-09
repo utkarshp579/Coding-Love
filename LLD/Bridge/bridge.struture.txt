@@ -1,0 +1,25 @@
+Bridge Pattern  decouples an abstraction from its implementation, so that both can vary independently. 
+
+
+Used in decoupling , so we can grow or vary  each interfaces independently
+
+
+Similar to strategy pattern but differ in intent/
+    intent is both can increased / decrease separately , have separate logic. 
+
+    In strategy intent is changing behaviour of object dynamically 
+
+Bridge Pattern decouples an abstraction from its implementation so both can vary independently. Instead of one class hierarchy with exploding subclasses (like RedCircle, BlueCircle, RedSquare, BlueSquare...), you split it into two hierarchies connected by composition:
+
+Abstraction — the high-level control layer (what the client uses)
+Implementor — the low-level "how it's actually done" layer
+
+The abstraction holds a reference to an implementor object, rather than inheriting from it.
+
+
+
+USe Cases   
+    Cross-platform UI toolkits — abstraction is Window/Button, implementor is platform-specific rendering (Windows/Mac/Linux)
+    Device drivers — abstraction is a generic API, implementor is vendor-specific hardware code
+    Payment processing — abstraction is PaymentMethod (e.g., SubscriptionPayment), implementor is the actual gateway (Stripe, PayPal, Razorpay)
+    Notification systems — abstraction is Notification (Urgent, Normal), implementor is SendChannel (Email, SMS, Push)

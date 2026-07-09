@@ -15,3 +15,5 @@ Interview question :- How you deal with data if you are getting in another forma
 
 Definition :- 
     the adapter pattern act as a bridge between two incompatible iterfaces, allowing them to work together altering their underlying code. 
+
+    Client never talkes with incompatible class. 

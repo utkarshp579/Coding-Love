@@ -1,0 +1,22 @@
+Bridge Pattern Plan: Notification System
+
+Goal
+- Show how Notification type and MessageSender can vary independently using the Bridge pattern.
+- Support any notification type over any channel without changing existing classes.
+
+How it is created
+1. Define the implementor side as `MessageSender`.
+2. Add concrete senders such as `EmailSender`, `SMSSender`, and `PushSender`.
+3. Define the abstraction side as `Notification` with a reference to `MessageSender`.
+4. Add concrete notifications such as `UrgentNotification` and `RegularNotification`.
+5. Use a demo class to combine any notification with any sender.
+
+Why this works
+- Notification classes do not know how messages are delivered.
+- Sender classes do not know which notification type is using them.
+- New notifications and new channels are added by creating new classes only.
+
+Example combinations
+- Urgent Notification over Email
+- Urgent Notification over SMS
+- Regular Notification over Push

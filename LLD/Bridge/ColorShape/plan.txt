@@ -1,0 +1,24 @@
+Bridge Pattern Plan: Shape + Color
+
+Goal
+- Show how Shape and Color can vary independently using the Bridge pattern.
+- Add a new shape and a new color without changing existing classes.
+
+How it is created
+1. Define the implementor side as `Color`.
+2. Add concrete colors such as `Red` and `Blue`.
+3. Define the abstraction side as `Shape` with a reference to `Color`.
+4. Add concrete shapes such as `Circle` and `Square`.
+5. Extend the abstraction with `Triangle` without touching the existing shapes.
+6. Extend the implementor with `Green` without touching the existing colors.
+7. Use a demo class to combine any shape with any color.
+
+Why this works
+- Shapes do not know the color implementation details.
+- Colors do not know which shape uses them.
+- New shapes and new colors are added by creating new classes only.
+
+Example combinations
+- Red Circle
+- Blue Square
+- Green Triangle
